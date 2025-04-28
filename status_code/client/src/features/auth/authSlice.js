@@ -1,5 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-// import { loginUser, signupUser } from '..auth/authAPI';
+import { createSlice } from '@reduxjs/toolkit';
 
 const token = localStorage.getItem('token');
 
@@ -8,7 +7,6 @@ const initialState = {
   status: 'idle',
   error: null,
 };
-
 
 const authSlice = createSlice({
   name: 'auth',
@@ -19,12 +17,11 @@ const authSlice = createSlice({
       localStorage.removeItem('token');
     },
     setToken(state, actions) {
-      state.user = actions.payload,
-      localStorage.setItem('token',actions.payload)
+      state.user = actions.payload;
+      localStorage.setItem('token', actions.payload);
     }
   },
-  
 });
 
-export const { logout , setToken} = authSlice.actions;
+export const { logout, setToken } = authSlice.actions;
 export default authSlice.reducer;
